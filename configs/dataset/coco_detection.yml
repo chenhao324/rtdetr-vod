@@ -1,0 +1,34 @@
+task: detection
+
+num_classes: 30
+remap_mscoco_category: True
+
+train_dataloader: 
+  type: DataLoader
+  dataset: 
+    type: CocoDetection
+    img_folder: ""
+    ann_file: ./VID/annotations/vid_det_train_coco.json
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: False
+  batch_size: 20
+  num_workers: 4
+  drop_last: True 
+
+
+val_dataloader:
+  type: DataLoader
+  dataset: 
+    type: CocoDetection
+    img_folder: ""
+    ann_file: ./VID/annotations/vid_val_coco.json
+    transforms:
+      type: Compose
+      ops: ~ 
+
+  shuffle: False
+  batch_size: 20
+  num_workers: 4
+  drop_last: False
